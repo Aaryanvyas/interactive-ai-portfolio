@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Systems Engineer | Portfolio & Interactive Playgrounds</title>
+    <meta name="description" content="Portfolio of an AI Systems Engineer showcasing interactive RAG pipelines, agentic execution loops, and LLM evaluation harnesses.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background glow elements -->
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
+    <div class="glow-bg glow-3"></div>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">&lt;</span>AI<span class="logo-dot">.</span>ENG<span class="logo-accent">&gt;</span>
+            </a>
+            <nav>
+                <a href="#playground" class="nav-link">Interactive Playground</a>
+                <a href="#projects" class="nav-link">AI Systems</a>
+                <a href="#architecture" class="nav-link">Core Stack</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="#contact" class="btn btn-secondary btn-sm">Get in Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    <span>Proof, Not Just Claims</span>
+                </div>
+                <h1>Building production-grade <span class="text-gradient">AI Systems</span> that travel.</h1>
+                <p class="hero-subtitle">
+                    I design and evaluate end-to-end AI applications. Explore the interactive playgrounds below to see real-time visualizations of RAG retrieval, autonomous agent loops, and evaluation harnesses.
+                </p>
+                <div class="hero-actions">
+                    <a href="#playground" class="btn btn-primary">
+                        <span>Launch Playground</span>
+                        <i data-lucide="play" class="btn-icon"></i>
+                    </a>
+                    <a href="#projects" class="btn btn-outline">
+                        <span>View Architecture</span>
+                        <i data-lucide="cpu" class="btn-icon"></i>
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-num">RAG</div>
+                        <div class="stat-label">Vector search & rerank</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">AGENTS</div>
+                        <div class="stat-label">End-to-end task loops</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">EVALS</div>
+                        <div class="stat-label">Cost & latency scoring</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Playground -->
+        <section id="playground" class="playground-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">Interactive Demos</div>
+                    <h2>The Systems Playground</h2>
+                    <p class="section-desc">Don't take my word for it. Run the simulations below to understand exactly how these systems function, output data, and fail under different parameters.</p>
+                </div>
+
+                <div class="playground-card glass-panel">
+                    <!-- Tab Headers -->
+                    <div class="playground-tabs">
+                        <button class="tab-btn active" data-tab="rag">
+                            <i data-lucide="database"></i>
+                            <span>RAG Visualizer</span>
+                        </button>
+                        <button class="tab-btn" data-tab="agent">
+                            <i data-lucide="terminal"></i>
+                            <span>Agent Terminal</span>
+                        </button>
+                        <button class="tab-btn" data-tab="eval">
+                            <i data-lucide="bar-chart-2"></i>
+                            <span>Eval Harness</span>
+                        </button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="tab-contents">
+                        
+                        <!-- RAG Visualizer Tab -->
+                        <div class="tab-content active" id="tab-rag">
+                            <div class="rag-layout">
+                                <div class="rag-controls panel-side">
+                                    <h3>RAG Configuration</h3>
+                                    <p class="panel-intro">Select a query and run RAG to see the retrieval pipeline in action. Toggle between standard RAG and Advanced RAG (with reranking) to see how hallucination is resolved.</p>
+                                    
+                                    <div class="control-group">
+                                        <label for="rag-query-select">Select Target Query:</label>
+                                        <select id="rag-query-select" class="form-control">
+                                            <option value="travel">Can I claim reimbursement for taxi fares on personal weekend trips?</option>
+                                            <option value="equipment">What is the budget for remote home-office setup and equipment?</option>
+                                            <option value="security">What is the policy regarding working from public Wi-Fi networks?</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label>RAG Mode:</label>
+                                        <div class="toggle-container">
+                                            <button class="toggle-btn active" id="rag-mode-standard">
+                                                Standard RAG
+                                            </button>
+                                            <button class="toggle-btn" id="rag-mode-advanced">
+                                                Advanced (Reranked)
+                                            </button>
+                                        </div>
+                                        <span class="helper-text" id="rag-mode-desc">Standard retrieves purely by embedding similarity. Advanced applies a cross-encoder reranker.</span>
+                                    </div>
+
+                                    <button id="run-rag-btn" class="btn btn-primary btn-block">
+                                        <span>Run Retrieval Pipeline</span>
+                                        <i data-lucide="refresh-cw" class="btn-icon"></i>
+                                    </button>
+                                </div>
+
+                                <div class="rag-visualizer panel-main">
+                                    <div class="flow-steps" id="rag-flow-container">
+                                        <!-- Step 1: Chunking & Embeddings -->
+                                        <div class="flow-step" id="rag-step-chunking">
+                                            <div class="step-header">
+                                                <div class="step-num">1</div>
+                                                <h4>Vector Database Lookup</h4>
+                                            </div>
+                                            <div class="step-body">
+                                                <div class="vector-db-sim">
+                                                    <div class="query-vector-node pulse-node">Query Vector</div>
+                                                    <div class="similarity-connector"></div>
+                                                    <div class="document-chunks" id="retrieved-chunks-list">
+                                                        <!-- Chunks populated dynamically -->
+                                                        <div class="empty-state-text">Run pipeline to visualize document chunks...</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Step 2: Context Augmentation & Output -->
+                                        <div class="flow-step" id="rag-step-generation">
+                                            <div class="step-header">
+                                                <div class="step-num">2</div>
+                                                <h4>LLM Generation & Citations</h4>
+                                            </div>
+                                            <div class="step-body">
+                                                <div class="llm-output-box">
+                                                    <div class="llm-output-header">
+                                                        <span class="status-indicator"></span>
+                                                        <span class="llm-output-title">LLM Response</span>
+                                                    </div>
+                                                    <div class="llm-output-content" id="rag-llm-response">
+                                                        Run pipeline to generate response...
+                                                    </div>
+                                                    <div class="llm-citations" id="rag-citations-container" style="display:none;">
+                                                        <h5>Sources & Citations:</h5>
+                                                        <ul id="rag-citations-list">
+                                                            <!-- Citations populated dynamically -->
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Failure Case Explainer -->
+                                                <div class="failure-explainer" id="rag-failure-case" style="display:none;">
+                                                    <div class="failure-header">
+                                                        <i data-lucide="alert-triangle"></i>
+                                                        <span>Honest Failure Case (Semantic Drift)</span>
+                                                    </div>
+                                                    <p id="rag-failure-text">
+                                                        Because the standard RAG only did a semantic search, it fetched general "remote work guidelines" chunks instead of the specific "travel expenses" rules which were semantically distant. The LLM then hallucinated that personal trips are covered.
+                                                    </p>
+                                                    <div class="failure-fix">
+                                                        <strong>The Fix:</strong> Hybrid Search (BM25 + Dense) combined with a Cross-Encoder Reranker brings the exact clause to the top 3 results, resolving the drift. Try switching to <strong>Advanced Reranked</strong>.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent Terminal Tab -->
+                        <div class="tab-content" id="tab-agent">
+                            <div class="agent-layout">
+                                <div class="agent-controls panel-side">
+                                    <h3>Agent Controller</h3>
+                                    <p class="panel-intro">Agents solve tasks end-to-end by observing their environment, deciding on actions, executing tools, and evaluating the observations in a loop.</p>
+                                    
+                                    <div class="control-group">
+                                        <label for="agent-task-select">Select Task Goal:</label>
+                                        <select id="agent-task-select" class="form-control">
+                                            <option value="research">Research TechCorp (TCRP) current stock price and compile recent news summary.</option>
+                                            <option value="weather">Find the weekend weather for San Francisco and draft a travel recommendation.</option>
+                                            <option value="seo">Audit portfolio page for broken links and generate meta descriptions.</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label>Execution Speed:</label>
+                                        <div class="speed-selector">
+                                            <button class="speed-btn active" data-speed="1000">1x</button>
+                                            <button class="speed-btn" data-speed="500">2x</button>
+                                            <button class="speed-btn" data-speed="100">Insta</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="agent-actions">
+                                        <button id="run-agent-btn" class="btn btn-primary btn-block">
+                                            <i data-lucide="play" class="btn-icon"></i>
+                                            <span>Run Agent Loop</span>
+                                        </button>
+                                        <button id="reset-agent-btn" class="btn btn-outline btn-block" disabled>
+                                            <span>Reset Terminal</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="agent-status-panel">
+                                        <div class="status-row">
+                                            <span>Agent State:</span>
+                                            <strong id="agent-state-val" class="state-idle">IDLE</strong>
+                                        </div>
+                                        <div class="status-row">
+                                            <span>Steps Completed:</span>
+                                            <strong id="agent-steps-val">0 / 4</strong>
+                                        </div>
+                                        <div class="status-row">
+                                            <span>Tool Actions:</span>
+                                            <strong id="agent-tools-val">None</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="agent-terminal panel-main">
+                                    <div class="terminal-header">
+                                        <div class="terminal-buttons">
+                                            <span class="t-btn red"></span>
+                                            <span class="t-btn yellow"></span>
+                                            <span class="t-btn green"></span>
+                                        </div>
+                                        <div class="terminal-title">agent_runtime_shell.sh</div>
+                                        <div class="terminal-time" id="terminal-clock">11:52:14</div>
+                                    </div>
+                                    <div class="terminal-body" id="agent-terminal-logs">
+                                        <div class="terminal-line system-line">Waiting for task execution initialization...</div>
+                                        <div class="terminal-line system-line">Available tools: [web_search, fetch_webpage, stock_ticker, weather_api, report_writer]</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Eval Harness Tab -->
+                        <div class="tab-content" id="tab-eval">
+                            <div class="eval-layout">
+                                <div class="eval-controls panel-side">
+                                    <h3>Evaluation Harness</h3>
+                                    <p class="panel-intro">How do you know if your prompts/rag pipeline actually work? You build an evaluation harness to benchmark LLM outputs across accuracy, latency, and cost.</p>
+                                    
+                                    <div class="control-group">
+                                        <label>Select Models to Compare:</label>
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="eval-model-1" checked disabled>
+                                                <span>GPT-4o (Standard Baseline)</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="eval-model-2" checked>
+                                                <span>Claude 3.5 Sonnet (Advanced)</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="eval-model-3" checked>
+                                                <span>Gemini 1.5 Pro (Multimodal)</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="eval-model-4">
+                                                <span>Llama-3-8B-Instruct (Local Open-Source)</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <button id="run-eval-btn" class="btn btn-primary btn-block">
+                                        <span>Execute Evaluation Benchmarks</span>
+                                        <i data-lucide="play" class="btn-icon"></i>
+                                    </button>
+                                </div>
+
+                                <div class="eval-dashboard panel-main">
+                                    <!-- Metrics Grid -->
+                                    <div class="metrics-grid">
+                                        <div class="metric-progress-card">
+                                            <div class="metric-label">Avg Accuracy (%)</div>
+                                            <div class="metric-bars" id="metric-accuracy-bars">
+                                                <!-- Bars loaded dynamically -->
+                                                <div class="empty-state-text">Execute eval to display charts...</div>
+                                            </div>
+                                        </div>
+                                        <div class="metric-progress-card">
+                                            <div class="metric-label">Avg Latency (ms)</div>
+                                            <div class="metric-bars" id="metric-latency-bars">
+                                                <div class="empty-state-text">Execute eval to display charts...</div>
+                                            </div>
+                                        </div>
+                                        <div class="metric-progress-card">
+                                            <div class="metric-label">Cost per 1M Tokens (USD)</div>
+                                            <div class="metric-bars" id="metric-cost-bars">
+                                                <div class="empty-state-text">Execute eval to display charts...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Chart Visualizer -->
+                                    <div class="eval-chart-box">
+                                        <h4>Accuracy vs Cost Trade-off Map</h4>
+                                        <div class="scatter-plot-container">
+                                            <div class="scatter-plot" id="eval-scatter-plot">
+                                                <!-- Dynamic nodes will load here -->
+                                                <div class="scatter-grid-lines"></div>
+                                                <span class="y-axis-label">Accuracy (%)</span>
+                                                <span class="x-axis-label">Cost ($)</span>
+                                                <div class="empty-state-text">Run benchmark to map accuracy vs cost...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Eval Cases Log -->
+                                    <div class="eval-log-container">
+                                        <h4>Eval Log & Test Harness Assertions</h4>
+                                        <div class="eval-log-table-wrapper">
+                                            <table class="eval-log-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Test Case</th>
+                                                        <th>Model</th>
+                                                        <th>Metric</th>
+                                                        <th>Expected</th>
+                                                        <th>Actual Output</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="eval-log-tbody">
+                                                    <tr>
+                                                        <td colspan="6" class="table-empty">No evaluation logs. Run the benchmark to inspect test case results.</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Engineering Details -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">Architecture & System Design</div>
+                    <h2>Deep Dive into the Production Pipeline</h2>
+                    <p class="section-desc">How these projects look in production. An engineering overview of the real architectures, trade-offs, and critical system failures.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: RAG Card -->
+                    <div class="project-card glass-panel">
+                        <div class="project-header">
+                            <div class="project-icon-box">
+                                <i data-lucide="database" class="project-icon"></i>
+                            </div>
+                            <h3>RAG System: Production-Grade Knowledge Retrieval</h3>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">
+                                A high-performance RAG pipeline leveraging semantic embeddings, hybrid keyword matching, and cross-encoder reranking over corporate knowledge bases.
+                            </p>
+                            <div class="project-details">
+                                <h4>Engineering Trade-offs & Architecture</h4>
+                                <ul>
+                                    <li><strong>Dense (Vector) vs. Sparse (BM25) Search:</strong> Dense captures semantics, sparse matches specific ID codes/proper nouns. Used reciprocal rank fusion (RRF) to merge ranks.</li>
+                                    <li><strong>Chunk Strategy:</strong> Semantic chunking based on header hierarchy rather than fixed token length, minimizing split contexts.</li>
+                                </ul>
+                                <h4>What Broke & How It Was Solved</h4>
+                                <blockquote class="warning-quote">
+                                    "Initially, search query length drift led to retrieval of garbage chunks, causing GPT-4 to hallucinate expense coverage rules. We implemented **Cohere Rerank v3** post-retrieval, lowering Hallucination Rate from 12.4% to under 0.8%."
+                                </blockquote>
+                            </div>
+                            <div class="project-footer">
+                                <span class="tech-tag">Qdrant</span>
+                                <span class="tech-tag">LlamaIndex</span>
+                                <span class="tech-tag">Cohere Rerank</span>
+                                <span class="tech-tag">Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Agent Card -->
+                    <div class="project-card glass-panel">
+                        <div class="project-header">
+                            <div class="project-icon-box">
+                                <i data-lucide="cpu" class="project-icon"></i>
+                            </div>
+                            <h3>Autonomous Task Agents: ReAct loops & Tool-Use</h3>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">
+                                An agent framework designed to complete complex operations (like market data aggregation and research summarization) autonomously via a tool-calling execution cycle.
+                            </p>
+                            <div class="project-details">
+                                <h4>Engineering Trade-offs & Architecture</h4>
+                                <ul>
+                                    <li><strong>State Management:</strong> Built with stateful LangGraph instead of linear chains to allow complex backtracking, loops, and human-in-the-loop validation checkpoints.</li>
+                                    <li><strong>Tool Safety:</strong> Sandboxed terminal and query environments to prevent prompt injection or execution of malicious user commands.</li>
+                                </ul>
+                                <h4>What Broke & How It Was Solved</h4>
+                                <blockquote class="warning-quote">
+                                    "The agent often entered infinite thought loops when tools returned empty or noisy data. We fixed this by introducing **Structured Outputs** (JSON schema formatting) and a strict loop counter handler that forces human escalation after 5 repeated tool failures."
+                                </blockquote>
+                            </div>
+                            <div class="project-footer">
+                                <span class="tech-tag">LangGraph</span>
+                                <span class="tech-tag">Tool Calling</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Docker Sandbox</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Eval Harness Card -->
+                    <div class="project-card glass-panel">
+                        <div class="project-header">
+                            <div class="project-icon-box">
+                                <i data-lucide="bar-chart-2" class="project-icon"></i>
+                            </div>
+                            <h3>Eval Harness: Automated Quality Assertion</h3>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">
+                                A CI/CD-linked test suite running evaluation metrics (Retrieval Recall, Faithfulness, Semantic Similarity) over golden datasets.
+                            </p>
+                            <div class="project-details">
+                                <h4>Engineering Trade-offs & Architecture</h4>
+                                <ul>
+                                    <li><strong>LLM-as-a-Judge:</strong> Used GPT-4o-mini to grade complex outputs against reference ground truth. This decreased evaluation costs by 90% compared to GPT-4o.</li>
+                                    <li><strong>Continuous Testing:</strong> Integrates into Github Actions. Commits that degrade recall or prompt faithfulness scores by >5% trigger build failures.</li>
+                                </ul>
+                                <h4>What Broke & How It Was Solved</h4>
+                                <blockquote class="warning-quote">
+                                    "LLM judges are highly biased by position and length of the answers. We solved this by using **Ragas** metrics combined with deterministic exact-match checks for critical outputs (like IDs and numbers) to prevent judge hallucinations."
+                                </blockquote>
+                            </div>
+                            <div class="project-footer">
+                                <span class="tech-tag">Ragas</span>
+                                <span class="tech-tag">PyTest</span>
+                                <span class="tech-tag">Github Actions</span>
+                                <span class="tech-tag">Weights & Biases</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Stack Architecture -->
+        <section id="architecture" class="architecture-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">Technical Stack</div>
+                    <h2>The Systems Engineering Toolkit</h2>
+                    <p class="section-desc">My primary tools for designing, orchestrating, and analyzing production AI systems.</p>
+                </div>
+                
+                <div class="stack-layout">
+                    <div class="stack-category glass-panel">
+                        <div class="category-header">
+                            <i data-lucide="code-2"></i>
+                            <h3>Development & Orchestration</h3>
+                        </div>
+                        <div class="category-items">
+                            <div class="stack-item"><span>Python (PyTorch, NumPy)</span><div class="bar-fill" style="width: 95%;"></div></div>
+                            <div class="stack-item"><span>LangChain / LangGraph</span><div class="bar-fill" style="width: 90%;"></div></div>
+                            <div class="stack-item"><span>LlamaIndex</span><div class="bar-fill" style="width: 85%;"></div></div>
+                            <div class="stack-item"><span>FastAPI</span><div class="bar-fill" style="width: 90%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="stack-category glass-panel">
+                        <div class="category-header">
+                            <i data-lucide="database"></i>
+                            <h3>Data & Vector Storage</h3>
+                        </div>
+                        <div class="category-items">
+                            <div class="stack-item"><span>Qdrant / Pinecone</span><div class="bar-fill" style="width: 88%;"></div></div>
+                            <div class="stack-item"><span>PostgreSQL (pgvector)</span><div class="bar-fill" style="width: 85%;"></div></div>
+                            <div class="stack-item"><span>Redis Cache</span><div class="bar-fill" style="width: 75%;"></div></div>
+                            <div class="stack-item"><span>ElasticSearch / BM25</span><div class="bar-fill" style="width: 80%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="stack-category glass-panel">
+                        <div class="category-header">
+                            <i data-lucide="activity"></i>
+                            <h3>Evals & MLOps</h3>
+                        </div>
+                        <div class="category-items">
+                            <div class="stack-item"><span>Ragas / Phoenix</span><div class="bar-fill" style="width: 90%;"></div></div>
+                            <div class="stack-item"><span>Weights & Biases / MLflow</span><div class="bar-fill" style="width: 80%;"></div></div>
+                            <div class="stack-item"><span>Docker & Kubernetes</span><div class="bar-fill" style="width: 85%;"></div></div>
+                            <div class="stack-item"><span>GitHub CI/CD Pipelines</span><div class="bar-fill" style="width: 90%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="about-section">
+            <div class="container about-container glass-panel">
+                <div class="about-content">
+                    <div class="badge">Systems Engineer</div>
+                    <h2>Hi, I'm an <span class="text-gradient">AI Developer</span> focused on robust architectures.</h2>
+                    <p>
+                        I focus on building production systems rather than basic wrappers. My core belief is that AI engineering is 10% writing prompts and 90% systems design: data chunking pipelines, robust retrieval strategies, failure handling, state management, latency profiles, and cost control.
+                    </p>
+                    <p>
+                        I work closely with teams to transform raw research code and proof-of-concept chatbots into resilient, production-ready microservices backed by structured evaluations.
+                    </p>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Focused on deterministic reliability in non-deterministic systems.</span>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Deep understanding of retrieval rerank mechanics & latency profiles.</span>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Passionate about automated CI/CD evaluation harnesses.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="visual-box">
+                        <div class="architecture-node node-input">User Query</div>
+                        <div class="arrow-down"></div>
+                        <div class="architecture-node node-process">Vector Search & Rerank</div>
+                        <div class="arrow-down"></div>
+                        <div class="architecture-node node-eval">Harness Assertions (Ragas)</div>
+                        <div class="arrow-down"></div>
+                        <div class="architecture-node node-output">Verified Response</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-box glass-panel">
+                    <h2>Let's build reliable AI.</h2>
+                    <p>Need help moving from prompt-engineering tutorials to production-grade, evaluated, and robust AI architectures? Let's connect.</p>
+                    <div class="contact-buttons">
+                        <a href="mailto:your.email@example.com" class="btn btn-primary">
+                            <i data-lucide="mail"></i>
+                            <span>Send Email</span>
+                        </a>
+                        <a href="https://github.com/Aaryanvyas" target="_blank" rel="noopener" class="btn btn-outline">
+                            <i data-lucide="github"></i>
+                            <span>GitHub Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2026 AI Systems Portfolio. All rights reserved. Built with HTML, CSS, and Vanilla JS.</p>
+            <div class="footer-links">
+                <a href="#playground">Playground</a>
+                <a href="#projects">Systems</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="rag-demo.js"></script>
+    <script src="agent-demo.js"></script>
+    <script src="eval-demo.js"></script>
+</body>
+</html>
