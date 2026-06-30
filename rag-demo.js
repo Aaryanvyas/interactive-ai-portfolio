@@ -1,4 +1,4 @@
-﻿// RAG Interactive Visualizer Logic
+// RAG Interactive Visualizer Logic
 
 const RAG_DATA = {
     travel: {
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Simulate network/latency delay
         setTimeout(() => {
-            renderRagResults();
+            renderRagResults(data);
             runBtn.disabled = false;
             runBtn.innerHTML = `<span>Run Retrieval Pipeline</span> <i data-lucide="refresh-cw" class="btn-icon"></i>`;
             if (window.lucide) window.lucide.createIcons();
