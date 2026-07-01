@@ -1,4 +1,4 @@
-﻿// Evaluation Harness Dashboard Simulators
+// Evaluation Harness Dashboard Simulators
 
 const EVAL_MODELS = {
     'gpt-4o': {
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const maxLatency = Math.max(...modelIds.map(id => EVAL_MODELS[id].latency));
         modelIds.forEach(id => {
             const m = EVAL_MODELS[id];
-            const percentWidth = (m.latency / 100) * 100;
+            const percentWidth = (m.latency / maxLatency) * 100;
             latencyBars.appendChild(createBarNode(m.name, m.latency, 'ms', m.colorClass, percentWidth));
         });
 
