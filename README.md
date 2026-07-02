@@ -1,4 +1,4 @@
-﻿# Interactive AI Systems Portfolio
+# Interactive AI Systems Portfolio
 
 An ultra-premium, interactive portfolio designed to showcase production-grade AI engineering capabilities, with live visual playgrounds that explain critical concepts like **RAG semantic drift**, **autonomous ReAct agent loops**, and **continuous evaluation harnesses**.
 
@@ -26,20 +26,20 @@ This project demonstrates the core principle of AI systems engineering: **moving
 
 ```text
 ai-portfolio/
-â”œâ”€â”€ index.html       # Portfolio structure & layout markup
-â”œâ”€â”€ styles.css       # Premium slate dark theme & animations
-â”œâ”€â”€ app.js           # Core UI controllers & tab managers
-â”œâ”€â”€ rag-demo.js      # RAG pipeline simulation & failure case handler
-â”œâ”€â”€ agent-demo.js    # Autonomous ReAct agent runner and shell
-â”œâ”€â”€ eval-demo.js     # Eval metrics tracker, plots, and logs
-â””â”€â”€ README.md        # Technical explanation documentation
+├── index.html       # Portfolio structure & layout markup
+├── styles.css       # Premium slate dark theme & animations
+├── app.js           # Core UI controllers & tab managers
+├── rag-demo.js      # RAG pipeline simulation & failure case handler
+├── agent-demo.js    # Autonomous ReAct agent runner and shell
+├── eval-demo.js     # Eval metrics tracker, plots, and logs
+└── README.md        # Technical explanation documentation
 ```
 
 ## How to Run
 
 ### Method 1: Direct File Open
 You can open `index.html` directly in any web browser:
-1. Double-click [index.html](file:///C:/Users/Asus/.gemini/antigravity/scratch/ai-portfolio/index.html) or right-click and choose **Open in browser**.
+1. Double-click [index.html](./index.html) or right-click and choose **Open in browser**.
 2. All simulations run client-side (no server or API keys required).
 
 ### Method 2: Local HTTP Server (Recommended)
